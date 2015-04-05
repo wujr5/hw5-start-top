@@ -1,0 +1,34 @@
+//- index.jade
+doctype html
+html
+  title Calculator & Robots Play
+  meta("utf-8")
+  link(rel="stylesheet", href="./stylesheets/index.css")
+  script(src='./scripts/jquery.min.js')
+  script(src="./scripts/main.js")
+body
+  #at-plus-container
+    #bottom-positioner
+      div#button
+        // The at-plus-button contains:
+        // an info-bar
+        div#info-bar
+          .info(style="display:block")
+            span#show-order-sequence
+            span#sum
+        // a control-ring-container
+        #control-ring-container
+          ul#control-ring
+            li.A.button A
+              span.a.number
+            li.B.button B
+              span.b.number
+            li.C.button C
+              span.c.number
+            li.D.button D
+              span.d.number
+            li.E.button E
+              span.e.number
+        // an apb icon
+        .apb
+          .icon

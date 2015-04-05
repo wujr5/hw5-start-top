@@ -1,0 +1,47 @@
+// color rgba value constants
+$light-grey-bg-color: rgba(18, 21, 22, 0.10)
+$heavy-grey-bg-color: rgba(18, 21, 22, 0.60)
+$blue-bg-color: rgba(48, 63, 159, 1)
+$red-bg-color: rgba(255, 0, 0, 0.90)
+$light-green: #079e6e
+
+// mixins
+=size($width, $height)
+  width: $width
+  height: $height
+  
+=make-center-x($width)
+  position: absolute
+  left: 50%
+  margin-left: -($width / 2)
+
+=make-transition()
+  transition: all 0.2s ease-in-out
+
+=make-border-radius()
+  -webkit-border-radius: 50%
+  -moz-border-radius:    50%
+  -ms-border-radius:     50%
+  -o-border-radius:      50%
+  border-radius:         50%
+
+// global style
+html, body
+  height: 100%
+  width: 100%
+
+body
+  font-family: sans-serif
+
+ul
+  list-style: none
+
+#at-plus-containter
+  width: 800px
+  height: 100%
+  margin: 0 auto
+  text-align: center
+
+#bottom-positioner
+  width: 100%
+  bottom: 0
