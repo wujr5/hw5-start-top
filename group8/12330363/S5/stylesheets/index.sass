@@ -1,0 +1,103 @@
+@import ./base
+
+#button
+  +size(800px, 200px)
+  +make-center-x(800px)  
+  bottom: 10%
+
+  #info-bar
+    visibility: hidden
+    +size(150px, 150px)
+    +make-center-x(150px)  
+    bottom: 70%
+    background: $heavy-grey-bg-color
+    +make-border-radius()
+
+    span#show-order-sequence
+      +size(40px, 20px)
+      +make-center-x(40px)
+      top: -30%
+
+    span#message
+      +size(150px, 15px)
+      +make-center-x(150px)
+      font-size: 15px
+      top: -10%
+
+    span#sum
+      +size(50px, 100px)
+      +make-center-x(50px)
+      top: 30%
+      font-size: 12px
+      color: $light-green
+
+  #control-ring-container
+    visibility: hidden
+    +size(400px, 400px)
+    +make-center-x(400px)
+
+    .button
+      +size(50px, 50px)
+      text-align: center
+      font-weight: bold
+      font-size: 25px
+      color: $light-green
+      +make-border-radius()
+      +make-transition()
+      
+      .number
+        visibility: hidden
+        +size(20px, 20px)
+        position: absolute
+        margin-top: -5px
+        margin-left: 0
+        background: $red-bg-color
+        font: 15px bold sans-serif
+        color: #fff
+        +make-border-radius()
+    
+    .enabled
+      background: $blue-bg-color
+
+    .disabled
+      background: $light-grey-bg-color
+
+  .apb
+    +size(32px, 32px)
+    +make-center-x(32px)
+    bottom: 18%
+    background: url(./../assets/images/atplus_white.png) no-repeat center $light-grey-bg-color
+    +make-border-radius()
+    +make-transition()
+
+#button:hover
+  .apb
+    +size(80px, 80px)
+    +make-center-x(80px)
+    background: url(./../assets/images/atplus_green.png) no-repeat center $blue-bg-color
+  
+  #info-bar
+    visibility: visible
+
+  #control-ring-container
+    visibility: visible
+
+  .A
+    margin-top: 0
+    margin-left: 40px
+
+  .B
+    margin-top: 10px
+    margin-left: 15px
+
+  .C
+    margin-top: 17px
+    margin-left: 35px
+
+  .D
+    margin-top: 0
+    margin-left: 90px
+
+  .E
+    margin-top: -65px
+    margin-left: 160px
