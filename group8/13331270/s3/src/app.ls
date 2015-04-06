@@ -22,8 +22,7 @@ class Button
     @state = 'enabled'
     @dom.add-class 'enabled'
     @name = @dom.find '.title' .text!
-    @dom.click !~> if @state is 'enabled'
-      @@@disable-all-other-buttons @
+    @dom.click !~>
       @show-unread-ring!
       @wait!
       @fetch-number-and-show!
@@ -63,9 +62,7 @@ cumulator =
 
 robot =
   buttons: -> $ '#control-ring .button'
-  number: 0
-  action: !-> $(@buttons![@number++]).trigger 'click'
-  reset: !-> @number = 0
+  action: !-> @buttons! .trigger 'click'
 
 $ !->
   add-clicking-to-fetch-numbers-to-all-buttons!
@@ -79,9 +76,6 @@ add-clicking-to-fetch-numbers-to-all-buttons = !->
   for dom in $ '#control-ring .button'
     button = new Button ($ dom), (number)!->
       cumulator.add number
-      set-timeout !->
-        robot.action!
-      , 1000ms
 
 add-clicking-to-calculate-result-to-the-bubble = !->
   bubble = $ '#info-bar' 
@@ -104,7 +98,6 @@ add-clicking-to-action-the-robot = !->
 
 reset = !->
   cumulator.reset!
-  robot.reset!
   Button.reset-all!
   bubble = $ '#info-bar'
   bubble.remove-class 'enabled' .add-class 'disabled'

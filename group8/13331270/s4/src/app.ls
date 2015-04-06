@@ -64,8 +64,10 @@ cumulator =
 robot =
   buttons: -> $ '#control-ring .button'
   number: 0
-  action: !-> $(@buttons![@number++]).trigger 'click'
-  reset: !-> @number = 0
+  order: ['A' to 'E']
+  shuttle-the-order: !-> @order.sort -> 0.5 - Math.random!
+  action: !-> if @number < @order.length then $(@buttons![@order[@number++].charCodeAt(0) - 'A'.charCodeAt(0)]).trigger 'click'
+  reset: !-> @number = 0; @order = ['A' to 'E']
 
 $ !->
   add-clicking-to-fetch-numbers-to-all-buttons!
@@ -73,7 +75,7 @@ $ !->
   add-resetting-when-leave-apb!
   add-clicking-to-action-the-robot!
 
-  s2-action-the-robot!
+  s4-action-the-robot!
 
 add-clicking-to-fetch-numbers-to-all-buttons = !-> 
   for dom in $ '#control-ring .button'
@@ -87,6 +89,7 @@ add-clicking-to-calculate-result-to-the-bubble = !->
   bubble = $ '#info-bar' 
   bubble.add-class 'disabled'
   bubble.click !-> if bubble.has-class 'enabled'
+    bubble.find '.sequence' .text robot.order
     bubble.find '.amount' .text cumulator.sum
     bubble.remove-class 'enabled' .add-class 'disabled'
 
@@ -100,7 +103,7 @@ add-resetting-when-leave-apb = !->
     , 0
 
 add-clicking-to-action-the-robot = !->
-  $ '.icon' .click !-> robot.action!
+  $ '.icon' .click !-> robot.shuttle-the-order!; robot.action!
 
 reset = !->
   cumulator.reset!
@@ -108,7 +111,8 @@ reset = !->
   Button.reset-all!
   bubble = $ '#info-bar'
   bubble.remove-class 'enabled' .add-class 'disabled'
-  bubble.find '.amount span' .text ''
+  bubble.find '.amount' .text ''
+  bubble.find '.sequence' .text ''
 
-s2-action-the-robot = !-> console.log "robot clicking action!"
+s4-action-the-robot = !-> console.log "robot clicking action!"
 

@@ -73,6 +73,7 @@ add-clicking-to-calculate-result-to-the-bubble = !->
   bubble.add-class 'disabled'
   bubble.click !-> if bubble.has-class 'enabled'
     bubble.find '.amount' .text cumulator.sum
+    bubble.remove-class 'enabled' .add-class 'disabled'
 
 add-resetting-when-leave-apb = !->
   is-enter-other = false
